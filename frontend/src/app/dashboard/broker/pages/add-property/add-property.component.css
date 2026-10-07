@@ -1,0 +1,210 @@
+.add-property-wrapper{
+
+padding:30px;
+background:#f5f6fa;
+min-height:100vh;
+
+}
+
+/* HEADER */
+
+.page-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+
+}
+
+.page-header h2{
+margin:0;
+}
+
+.back-btn{
+
+background:#3498db;
+border:none;
+color:white;
+padding:10px 15px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+/* FORM LAYOUT */
+
+.form-layout{
+
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+
+}
+
+/* LEFT FORM */
+
+.form-section{
+
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+
+}
+
+.input-group{
+
+display:flex;
+flex-direction:column;
+
+}
+
+.input-group input{
+
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+/* STATUS BUTTONS */
+
+.status-buttons{
+
+margin-top:15px;
+display:flex;
+gap:10px;
+
+}
+
+.status-buttons button{
+
+padding:8px 15px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+background:#ddd;
+
+}
+
+.status-buttons .active{
+
+background:#3498db;
+color:white;
+
+}
+
+/* DESCRIPTION */
+
+.description{
+
+margin-top:15px;
+
+}
+
+.description textarea{
+
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+/* IMAGE SECTION */
+
+.image-section{
+
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+.upload-box{
+
+border:2px dashed #3498db;
+padding:30px;
+text-align:center;
+cursor:pointer;
+border-radius:10px;
+margin-bottom:15px;
+
+}
+
+/* PREVIEW */
+
+.preview-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+
+}
+
+.preview{
+
+position:relative;
+
+}
+
+.preview img{
+
+width:100%;
+height:80px;
+object-fit:cover;
+border-radius:6px;
+
+}
+
+.preview button{
+
+position:absolute;
+top:5px;
+right:5px;
+background:red;
+border:none;
+color:white;
+border-radius:50%;
+width:20px;
+height:20px;
+cursor:pointer;
+
+}
+
+/* BUTTONS */
+
+.form-buttons{
+
+margin-top:25px;
+display:flex;
+justify-content:flex-end;
+gap:10px;
+
+}
+
+.form-buttons button{
+
+padding:10px 20px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+.add-btn{
+
+background:#2ecc71;
+color:white;
+
+}

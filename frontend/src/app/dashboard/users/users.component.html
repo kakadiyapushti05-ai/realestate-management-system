@@ -1,0 +1,339 @@
+<div class="dashboard-container">
+
+<h2 class="page-title">Overview</h2>
+
+<div class="overview-section">
+
+<div class="overview-card green">
+<div class="icon-box">🏡</div>
+<div class="overview-text">
+<p>Active Listings</p>
+<h3>{{properties.length}}</h3>
+</div>
+</div>
+
+<div class="overview-card blue" (click)="showSavedProperties()">
+<div class="icon-box">💙</div>
+<div class="overview-text">
+<p>Saved Properties</p>
+<h3>{{savedProperties.length}}</h3>
+</div>
+</div>
+
+<div class="overview-card orange" (click)="openMyInquiries()">
+<div class="icon-box">📋</div>
+<div class="overview-text">
+<p>My Inquiries</p>
+
+<h3 *ngIf="myInquiries > 0">{{myInquiries}}</h3>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="main-layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar-column">
+
+<div class="profile-card">
+
+<img
+class="profile-img"
+[src]="user?.profileImage 
+? 'http://localhost:8000/' + user.profileImage
+: 'assets/default-user.png'"
+alt="profile"
+/>
+
+<h3>{{user?.name || 'User Name'}}</h3>
+
+<p>{{user?.email || 'email@example.com'}}</p>
+
+<p>{{user?.contact || '+91 XXXXXXXX'}}</p>
+
+<button class="edit-profile" (click)="openEditProfile()">
+Edit Profile
+</button>
+
+</div>
+
+
+<!-- FILTERS -->
+<div class="filters">
+
+<div class="filter-title">Filters</div>
+
+<div class="filter-group">
+
+<label>Location</label>
+
+<input
+type="text"
+class="location-search"
+placeholder="Search city or area..."
+[(ngModel)]="locationSearch"
+/>
+
+</div>
+
+<div class="filter-group">
+
+<label>Property Type</label>
+
+<div>
+<input type="checkbox" (change)="toggleType('House',$event)"> House
+</div>
+
+<div>
+<input type="checkbox" (change)="toggleType('Apartment',$event)"> Apartment
+</div>
+
+<div>
+<input type="checkbox" (change)="toggleType('Villa',$event)"> Villa
+</div>
+
+</div>
+
+<div class="filter-group">
+
+<label>Price Range</label>
+
+<input
+type="range"
+min="0"
+max="100000000"
+[(ngModel)]="priceRange"
+/>
+
+<div class="range-label">
+₹20L <span>1CR</span>
+</div>
+
+</div>
+
+<div class="filter-group">
+
+<label>BHK</label>
+
+<input
+type="range"
+min="1"
+max="5"
+[(ngModel)]="bhk"
+/>
+
+<div class="range-label">
+1 <span>5+</span>
+</div>
+
+</div>
+
+<button class="apply-filter" (click)="applySidebarFilters()">
+Apply Filters
+</button>
+
+</div>
+<!-- LOGOUT BUTTON -->
+<button class="logout-btn" (click)="logout()">
+Logout
+</button>
+</div>
+
+
+
+
+<!-- PROPERTY SECTION -->
+
+<div class="property-section">
+
+<div class="filter-bar">
+
+<button
+class="filter-pill"
+[class.active]="activeFilter === 'all'"
+(click)="applyFilter('all')">
+All
+</button>
+
+<button
+class="filter-pill"
+[class.active]="activeFilter === 'sale'"
+(click)="applyFilter('sale')">
+For Sale
+</button>
+
+<button
+class="filter-pill"
+[class.active]="activeFilter === 'rent'"
+(click)="applyFilter('rent')">
+For Rent
+</button>
+
+<select class="price-filter" (change)="applyPriceFilter($event)">
+<option value="">Sort By Price</option>
+<option value="low">Low → High</option>
+<option value="high">High → Low</option>
+</select>
+
+<input
+type="text"
+class="property-search"
+placeholder="Search property..."
+[(ngModel)]="searchText"
+(input)="searchProperty()"
+/>
+
+</div>
+
+
+<div class="available-title">
+Available Properties
+</div>
+
+
+<div class="property-grid">
+
+<div class="property-card" *ngFor="let p of filteredProperties">
+
+  <div class="image-wrapper">
+
+    <!-- STATUS -->
+    <span 
+    class="badge"
+    [ngClass]="{
+      'sale': p.propertyStatus === 'sale',
+      'rent': p.propertyStatus === 'rent',
+      'sold': p.propertyStatus === 'sold'
+    }">
+    {{ p.propertyStatus | titlecase }}
+    </span>
+
+    
+
+    <img
+class="main-img"
+[src]="'http://localhost:8000/uploads/' + p.images[currentImageIndex[p._id] || 0]"
+(error)="p.images[0] = 'default.jpg'"
+>
+
+    <!-- SAVE -->
+    <button class="save-btn" (click)="toggleSave(p)">
+      <span *ngIf="isSaved(p)">❤️</span>
+      <span *ngIf="!isSaved(p)">🤍</span>
+    </button>
+
+    <!-- NAV -->
+    <button class="nav-btn left"
+    *ngIf="p.images?.length > 1"
+    (click)="prevImage(p._id, p.images.length)">‹</button>
+
+    <button class="nav-btn right"
+    *ngIf="p.images?.length > 1"
+    (click)="nextImage(p._id, p.images.length)">›</button>
+
+   <!-- BOTTOM ACTION BAR -->
+<div class="bottom-actions">
+
+  <!-- ✅ VERIFIED -->
+<span *ngIf="p.isVerified === true" class="verify-badge">
+  ✔ Verified
+</span>
+
+<!-- 🚨 REPORT (only if NOT verified AND not already reported) -->
+<button
+  *ngIf="p.isVerified !== true && !reportedIds.includes(p._id)"
+  class="report-btn"
+  (click)="reportProperty(p._id)">
+  🚨 Report
+</button>
+
+  <!-- 🔒 INQUIRY -->
+  <button
+    class="inquiry-btn"
+    *ngIf="p.propertyStatus !== 'sold'"
+    (click)="openInquiry(p._id)">
+    🔒 Inquiry
+  </button>
+
+</div>
+
+  </div>
+
+  <div class="property-content">
+
+    <h3>{{p.propertyname}}</h3>
+
+    <div class="property-price">
+      ₹ {{p.propertyprice | number}}
+    </div>
+
+    <div class="property-info">
+      <div>🛏 {{p.size}} BHK</div>
+      <div>🏢 Floor {{p.floor}}</div>
+     <div>📍 {{p.area || p.location || ''}}, {{p.city}}</div>
+      <div>🏠 {{p.type}}</div>
+    </div>
+
+    <p>{{p.description}}</p>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= MODAL ================= -->
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal-overlay" *ngIf="editModal">
+
+<div class="modal-box">
+
+<h2>Edit Profile</h2>
+
+<div class="modal-field">
+<label>Name</label>
+<input type="text" [(ngModel)]="editData.name">
+</div>
+
+<div class="modal-field">
+<label>Email</label>
+<input type="email" [(ngModel)]="editData.email">
+</div>
+
+<div class="modal-field">
+<label>Phone</label>
+<input type="text" [(ngModel)]="editData.contact">
+</div>
+
+<div class="modal-field">
+<label>Profile Image</label>
+<input type="file" (change)="onImageSelect($event)">
+</div>
+
+<div class="modal-actions">
+
+<button class="modal-save-btn" (click)="updateProfile()">
+Save
+</button>
+
+<button class="modal-cancel-btn" (click)="closeModal()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>

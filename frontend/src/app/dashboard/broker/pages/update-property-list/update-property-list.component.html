@@ -1,0 +1,59 @@
+<div class="list-page">
+
+  <div class="list-wrapper">
+
+    <!-- 🔥 HEADER -->
+    <div class="header">
+
+      <button class="back-btn" (click)="goToDashboard()">
+        ←
+      </button>
+
+      <h2 class="page-title">Select Property to Update</h2>
+
+    </div>
+
+    <div class="property-grid">
+
+      <div class="property-card" *ngFor="let property of properties">
+
+        <div class="card-header">
+          <h3>{{ property.propertyname }}</h3>
+        </div>
+
+        <div class="card-body">
+
+          <p class="price">
+            ₹ {{ property.propertyprice }}
+          </p>
+
+          <p class="status">
+            Status:
+            <span
+              class="status-badge"
+              [ngClass]="property.propertyStatus"
+            >
+              {{ property.propertyStatus }}
+            </span>
+          </p>
+
+        </div>
+
+        <div class="card-footer">
+
+          <a
+            class="update-btn"
+            [routerLink]="['/broker/update-property', property._id]"
+          >
+            Update Property
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

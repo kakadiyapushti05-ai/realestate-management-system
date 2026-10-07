@@ -1,0 +1,199 @@
+/* PAGE BACKGROUND */
+
+.inquiry-page{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Poppins',sans-serif;
+position:relative;
+overflow:hidden;
+}
+
+/* BLUR HOUSE IMAGE */
+
+.inquiry-page::before{
+content:"";
+position:absolute;
+inset:0;
+background:url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c")
+center/cover no-repeat;
+filter:blur(8px);
+transform:scale(1.1);
+z-index:-2;
+}
+
+/* DARK OVERLAY */
+
+.inquiry-page::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.45);
+z-index:-1;
+}
+
+/* CARD */
+
+.inquiry-card{
+width:420px;
+padding:22px 26px;        /* smaller padding */
+background:#f5f5dc;
+border-radius:24px;
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* TITLE */
+
+.form-title{
+font-size:22px;           /* smaller title */
+font-weight:600;
+margin-bottom:15px;       /* less spacing */
+color:#1e293b;
+text-align:center;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+margin-bottom:14px;       /* smaller spacing */
+}
+
+/* LABEL */
+
+.input-group label{
+display:block;
+font-size:13px;
+font-weight:500;
+color:#1e293b;
+margin-bottom:5px;
+margin-left:30px;
+}
+
+/* INPUT BOX */
+
+.input-group input,
+.input-group textarea,
+.input-group select{
+
+width:85%;
+
+margin:0 auto;
+
+display:block;
+
+padding:10px 14px;        /* smaller padding */
+
+font-size:14px;
+
+border:none;
+
+outline:none;
+
+border-radius:18px;
+
+background:#f8fafc;
+
+box-shadow:inset 4px 4px 8px #e2e8f0,
+            inset -4px -4px 8px #ffffff;
+
+transition:.3s;
+
+}
+
+/* TEXTAREA */
+
+textarea{
+height:65px;              /* smaller textarea */
+resize:none;
+}
+
+/* SELECT */
+
+select{
+appearance:none;
+cursor:pointer;
+}
+
+/* HOVER */
+
+.input-group input:hover,
+.input-group textarea:hover,
+.input-group select:hover{
+background:white;
+}
+
+/* FOCUS */
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus{
+box-shadow:0 0 0 2px #6366f1;
+}
+
+/* FIXED INPUT STYLE */
+
+.fixed-label input,
+.fixed-label select{
+background:#eef2ff;
+}
+
+/* BUTTON */
+
+.submit-btn{
+
+width:85%;
+
+margin:15px auto 0;
+
+display:block;
+
+padding:10px;             /* smaller button */
+
+border:none;
+
+border-radius:25px;
+
+font-size:14px;
+
+font-weight:500;
+
+color:white;
+
+background:linear-gradient(135deg,#965a3e,#7b432a);
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+/* BUTTON HOVER */
+
+.submit-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* BACK ICON */
+
+.back-icon{
+position:absolute;
+top:20px;
+left:20px;
+font-size:22px;
+cursor:pointer;
+color:white;
+background:rgba(0,0,0,0.5);
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+transition:0.3s;
+}
+
+.back-icon:hover{
+background:#965a3e;
+}

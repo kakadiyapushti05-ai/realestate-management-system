@@ -1,0 +1,169 @@
+<div class="add-property-wrapper">
+
+<!-- TOP HEADER -->
+<div class="page-header">
+
+<div class="title">
+<h2>Add New Property</h2>
+<p>Fill Details to Add a New Property Listing</p>
+</div>
+
+<button type="button" (click)="goDashboard()" class="back-btn">
+← Back to Dashboard
+</button>
+
+</div>
+
+
+<form (ngSubmit)="submit()" enctype="multipart/form-data">
+
+<div class="form-layout">
+
+<!-- LEFT FORM -->
+<div class="form-section">
+
+<h3>Property Details</h3>
+
+<div class="grid">
+
+<div class="input-group">
+<label>Property Name</label>
+<input type="text" [(ngModel)]="property.propertyname" name="propertyname">
+</div>
+
+<div class="input-group">
+<label>Property Type</label>
+<input type="text" [(ngModel)]="property.type" name="type">
+</div>
+
+<div class="input-group">
+<label>Price</label>
+<input type="number" [(ngModel)]="property.propertyprice" name="propertyprice">
+</div>
+
+<div class="input-group">
+<label>Size (BHK)</label>
+<input type="number" [(ngModel)]="property.size" name="size">
+</div>
+
+<div class="input-group">
+<label>Floor</label>
+<input type="number" [(ngModel)]="property.floor" name="floor">
+</div>
+
+<div class="input-group">
+<label>City</label>
+<input type="text" [(ngModel)]="property.city" name="city">
+</div>
+
+<div class="input-group">
+<label>Area</label>
+<input type="text" [(ngModel)]="property.area" name="area">
+</div>
+
+</div>
+
+
+<!-- STATUS BUTTONS -->
+
+<div class="status-buttons">
+
+<button type="button"
+[class.active]="property.propertyStatus=='rent'"
+(click)="property.propertyStatus='rent'">
+Rent
+</button>
+
+<button type="button"
+[class.active]="property.propertyStatus=='sale'"
+(click)="property.propertyStatus='sale'">
+Sale
+</button>
+
+<button type="button"
+[class.active]="property.propertyStatus=='sold'"
+(click)="property.propertyStatus='sold'">
+Sold
+</button>
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+<label>Description</label>
+
+<textarea rows="4"
+[(ngModel)]="property.description"
+name="description"></textarea>
+
+</div>
+
+</div>
+
+
+
+<!-- IMAGE UPLOAD -->
+
+<div class="image-section">
+
+<h3>Property Images</h3>
+
+<div class="upload-box"
+(click)="fileInput.click()">
+
+<p>Drag & Drop Images</p>
+<p>or Click to Upload</p>
+
+<input type="file"
+multiple
+hidden
+#fileInput
+(change)="onFileChange($event)"
+accept="image/*">
+
+</div>
+
+
+<!-- IMAGE PREVIEW -->
+
+<div class="preview-grid">
+
+<div class="preview"
+*ngFor="let img of imagePreviews; let i=index">
+
+<img [src]="img">
+
+<button type="button"
+(click)="removeImage(i)">
+✖
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ACTION BUTTONS -->
+
+<div class="form-buttons">
+
+<button type="button" routerLink="/broker">
+Cancel
+</button>
+
+<button type="submit" class="add-btn">
+Add Property
+</button>
+
+</div>
+
+</form>
+
+</div>

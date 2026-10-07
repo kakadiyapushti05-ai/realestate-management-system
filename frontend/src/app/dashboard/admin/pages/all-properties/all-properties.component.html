@@ -1,0 +1,92 @@
+<div class="container">
+
+  <!-- 🔙 TOP BAR -->
+  <div class="top-bar">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+    <h2 class="title">All Properties</h2>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filters">
+
+    <div class="search-box">
+      <input type="text" placeholder="Search properties..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()" />
+    </div>
+
+    <select [(ngModel)]="selectedCity" (change)="applyFilters()">
+      <option value="">All Cities</option>
+      <option *ngFor="let c of cities" [value]="c">{{c}}</option>
+    </select>
+
+    <select [(ngModel)]="selectedStatus" (change)="applyFilters()">
+      <option value="all">All</option>
+      <option value="sale">Sale</option>
+      <option value="rent">Rent</option>
+      <option value="sold">Sold</option>
+    </select>
+
+    <select [(ngModel)]="verifiedFilter" (change)="applyFilters()">
+      <option value="all">Verified</option>
+      <option value="verified">Verified Only</option>
+      <option value="unverified">Unverified</option>
+    </select>
+
+    <select [(ngModel)]="sortPrice" (change)="applyFilters()">
+      <option value="">Sort Price</option>
+      <option value="low">Low → High</option>
+      <option value="high">High → Low</option>
+    </select>
+
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <div class="card" *ngFor="let p of filteredProperties">
+
+      <div class="image-box">
+
+        <span class="badge" [ngClass]="p.propertyStatus">
+          {{p.propertyStatus}}
+        </span>
+
+        <img
+          [src]="'http://localhost:8000/uploads/' + p.images[currentImageIndex[p._id] || 0]"
+        />
+
+        <button class="nav left"
+          *ngIf="p.images?.length > 1"
+          (click)="prevImage(p._id, p.images.length)">‹</button>
+
+        <button class="nav right"
+          *ngIf="p.images?.length > 1"
+          (click)="nextImage(p._id, p.images.length)">›</button>
+
+        <span *ngIf="p.isVerified" class="verified">
+          ✔ Verified
+        </span>
+
+      </div>
+
+      <div class="content">
+
+        <h3>{{p.propertyname}}</h3>
+
+        <div class="price">₹ {{p.propertyprice | number}}</div>
+
+        <div class="info">
+          <span>🛏 {{p.size}} BHK</span>
+          <span>🏢 Floor {{p.floor}}</span>
+          <span>📍 {{p.city}}</span>
+          <span>🏠 {{p.type}}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,234 @@
+.admin-wrapper {
+  min-height: 100vh;
+  background: #f4f7fb;
+  padding: 25px 40px 40px 40px;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 🔥 TOP CARDS */
+.top-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: -10px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 34px;
+}
+
+.stat-card h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #64748b;
+}
+
+.stat-card p {
+  margin-top: 6px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* 🔥 CHART SECTION */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 15px; /* ✅ 🔥 SPACE ADD HERE */
+}
+
+/* 🔥 TITLE */
+.chart-title {
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* 🔥 CITY CHART */
+.city-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  height: 220px;
+  padding: 10px 0;
+}
+
+.city-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+}
+
+.bar-container {
+  height: 160px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 35px;
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.bar:hover {
+  transform: scale(1.1);
+}
+
+.count {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.city-name {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #64748b;
+}
+
+/* 🔥 PIE WRAPPER */
+.pie-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* PIE */
+.pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+/* 🔥 LEGEND */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ITEM */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* DOT */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* COLORS MATCH PIE */
+.dot.sale {
+  background: #2563eb;
+}
+
+.dot.rent {
+  background: #22c55e;
+}
+
+.dot.sold {
+  background: #ef4444;
+}
+
+/* 🔥 BUTTONS */
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 14px 35px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.green-btn {
+  background: linear-gradient(135deg,#16a34a,#15803d);
+}
+
+.purple-btn {
+  background: linear-gradient(135deg,#7c3aed,#6d28d9);
+}
+
+.blue-btn {
+  background: linear-gradient(135deg,#2563eb,#1d4ed8);
+}
+
+.red-btn {
+  background: linear-gradient(135deg,#ef4444,#dc2626);
+}
+/*  LOGOUT WRAPPER (PERFECT CENTER BELOW BUTTONS) */
+.logout-wrapper {
+  display: flex;
+  justify-content: center;   
+  margin-top: 25px;
+}
+
+/*  LOGOUT BUTTON */
+.logout-btn {
+  padding: 12px 40px;
+  border: none;
+  border-radius: 10px;
+
+  /* NAVBAR COLOR */
+  background: linear-gradient(135deg, #8b6b4a, #6f533c);
+
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/*  HOVER */
+.logout-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #6f533c, #5a4331);
+}

@@ -1,0 +1,124 @@
+<div class="admin-wrapper">
+
+  <div class="dashboard-wrapper">
+
+    <!-- 🔥 IMPORTANT: Child pages render here -->
+    <router-outlet></router-outlet>
+
+    <!-- 🔽 ONLY SHOW DASHBOARD WHEN NO CHILD ROUTE -->
+    <div *ngIf="router.url === '/admin'">
+
+      <!-- TOP CARDS -->
+      <div class="top-cards">
+
+        <div class="card stat-card">
+          <div class="icon">👤</div>
+          <div>
+            <h4>Admin Profile</h4>
+            <p>{{ adminName }}</p>
+          </div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="icon">👨‍💼</div>
+          <div>
+            <h4>Total Broker</h4>
+            <p>{{ totalBrokers }}</p>
+          </div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="icon">👥</div>
+          <div>
+            <h4>Total Users</h4>
+            <p>{{ totalUsers }}</p>
+          </div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="icon">🏢</div>
+          <div>
+            <h4>Total Properties</h4>
+            <p>{{ totalProperties }}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CHART -->
+      <div class="chart-row">
+
+        <div class="card chart-card">
+          <h3>Properties by City</h3>
+
+          <div class="city-chart">
+            <div *ngFor="let item of cityData | keyvalue" class="city-bar">
+              <div class="bar-container">
+                <div class="bar" [style.height.px]="getHeight(item.value)"></div>
+              </div>
+
+              <div class="count">{{ item.value }}</div>
+              <div class="city-name">{{ item.key }}</div>
+            </div>
+          </div>
+        </div>
+
+       <div class="card chart-card">
+  <h3>Properties by Sales</h3>
+
+  <div class="pie-wrapper">
+
+    <!-- PIE -->
+    <div 
+      class="pie-chart"
+      [style.background]="
+        totalProperties > 0 ?
+        'conic-gradient(' +
+        '#2563eb 0% ' + (salesData.sale * 100 / totalProperties) + '%,' +
+        '#22c55e ' + (salesData.sale * 100 / totalProperties) + '% ' + ((salesData.sale + salesData.rent) * 100 / totalProperties) + '%,' +
+        '#ef4444 ' + ((salesData.sale + salesData.rent) * 100 / totalProperties) + '% 100%)'
+        : '#eee'
+      ">
+    </div>
+
+    <!-- 🔥 LEGEND -->
+    <div class="legend">
+
+      <div class="legend-item">
+        <span class="dot sale"></span>
+        Sale ({{ salesData.sale }})
+      </div>
+
+      <div class="legend-item">
+        <span class="dot rent"></span>
+        Rent ({{ salesData.rent }})
+      </div>
+
+      <div class="legend-item">
+        <span class="dot sold"></span>
+        Sold ({{ salesData.sold || 0 }})
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="bottom-buttons">
+        <button class="green-btn" (click)="goToUsers()">All Users</button>
+        <button class="purple-btn" (click)="goToBrokers()">All Brokers</button>
+        <button class="blue-btn" (click)="goToProperties()">All Properties</button>
+        <button class="red-btn" (click)="goToReported()">Reported Properties</button>
+      </div>
+<!-- 🔥 LOGOUT BUTTON -->
+<div class="logout-wrapper">
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
+    </div>
+
+  </div>
+
+</div>

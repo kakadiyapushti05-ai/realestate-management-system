@@ -1,0 +1,85 @@
+<div class="signup-wrapper">
+
+  <div class="signup-container">
+
+    <!-- LEFT IMAGE -->
+    <div class="left-image"></div>
+
+    <!-- SIGNUP FORM -->
+    <form class="signup-card" (ngSubmit)="register()">
+
+      <h2>Create Account</h2>
+      <p class="subtitle">Join us and get started</p>
+
+      <div class="input-group">
+        <i class="icon">👤</i>
+        <input type="text"
+               placeholder="Full Name"
+               [(ngModel)]="user.name"
+               name="name"
+               required />
+      </div>
+
+      <div class="input-group">
+        <i class="icon">✉️</i>
+        <input type="email"
+               placeholder="Email Address"
+               [(ngModel)]="user.email"
+               name="email"
+               required />
+      </div>
+
+      <div class="input-group">
+        <i class="icon">📞</i>
+        <input type="tel"
+               placeholder="Contact Number"
+               [(ngModel)]="user.contact"
+               name="contact"
+               maxlength="10"
+               required />
+      </div>
+
+      <div class="input-group">
+        <i class="icon">🔒</i>
+        <input type="password"
+               placeholder="Password"
+               [(ngModel)]="user.password"
+               name="password"
+               required />
+      </div>
+
+      <div class="input-group">
+        <i class="icon">🔒</i>
+        <input type="password"
+               placeholder="Confirm Password"
+               [(ngModel)]="user.confirmPassword"
+               name="confirmPassword"
+               required />
+      </div>
+
+      <div class="input-group">
+        <select [(ngModel)]="user.role" name="role" required>
+          <option value="" disabled selected>Select Role</option>
+          <option value="user">User</option>
+          <option value="broker">Broker</option>
+        </select>
+      </div>
+
+      <div class="input-group file-input">
+        <input type="file"
+               accept="image/*"
+               (change)="onFileSelected($event)" />
+      </div>
+
+      <button type="submit">Create Account</button>
+
+      <div class="signin-link">
+        Already have an account?
+        <span (click)="goToLogin()">Sign In</span>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

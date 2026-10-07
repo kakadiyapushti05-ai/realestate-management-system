@@ -1,0 +1,55 @@
+<div class="auth-bg">
+  <div class="auth-card">
+
+    <div class="auth-image">
+      <img src="/assets/images/signup.jpeg">
+    </div>
+
+    <form class="auth-form" (ngSubmit)="login()">
+      <h2>Login</h2>
+      <p>Welcome back, please login</p>
+
+      <input type="email" placeholder="Email Address"
+        [(ngModel)]="data.email" name="email" required>
+
+      <input type="password" placeholder="Password"
+        [(ngModel)]="data.password" name="password" required>
+
+      <div class="forgot-link">
+        <span (click)="openForgot()">Forgot Password?</span>
+      </div>
+
+      <button type="submit">Login</button>
+
+      <div class="signup-link">
+        Don't have an account?
+        <span (click)="goToSignup()">Sign Up</span>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- 🔥 OTP MODAL -->
+<div class="modal-backdrop" *ngIf="showForgot">
+
+  <div class="modal-box">
+
+    <h2>Reset Password</h2>
+
+    <input type="text" [value]="data.email" disabled>
+
+    <input type="text" placeholder="Enter OTP"
+      [(ngModel)]="otp">
+
+    <input type="password" placeholder="New Password"
+      [(ngModel)]="newPassword">
+
+    <div class="modal-actions">
+      <button (click)="resetPassword()">Verify & Update</button>
+      <button (click)="closeForgot()">Cancel</button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,120 @@
+<div class="glass-card">
+
+  <!-- 🔙 HEADER WITH BACK -->
+  <div class="header">
+
+    <div class="left-header">
+      <button class="back-btn" (click)="goBack()">← Back</button>
+      <h2>All Users</h2>
+    </div>
+
+    <div class="controls">
+
+      <!-- 🔍 SEARCH -->
+      <input
+        type="text"
+        placeholder="Search users..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()"
+      />
+
+      <!-- 🟢 STATUS FILTER -->
+      <select [(ngModel)]="statusFilter" (change)="applyFilters()">
+        <option value="all">All Status</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+
+      <!-- 📅 SORT -->
+      <select [(ngModel)]="sortOrder" (change)="sortUsers()">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+
+     
+
+    </div>
+  </div>
+
+  <!-- ================= TABLE ================= -->
+
+  <table *ngIf="!loading && filteredUsers.length > 0">
+
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>User</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Joined Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of filteredUsers; let i = index">
+
+        <!-- INDEX -->
+        <td>{{ i + 1 }}</td>
+
+        <!-- USER -->
+        <td class="user-cell">
+
+          <!-- PROFILE IMAGE -->
+          <img
+            *ngIf="user.profileImage"
+            [src]="user.profileImage"
+            class="avatar-img"
+            (error)="user.profileImage=''"
+          />
+
+          <!-- FALLBACK -->
+          <div *ngIf="!user.profileImage" class="avatar">
+            {{ user.name.charAt(0).toUpperCase() }}
+          </div>
+
+          <span>{{ user.name }}</span>
+
+        </td>
+
+        <!-- EMAIL -->
+        <td>{{ user.email }}</td>
+
+        <!-- 🟢 STATUS (IMPROVED UI) -->
+        <td>
+          <span
+            class="status"
+            [ngClass]="user.isOnline ? 'active' : 'inactive'"
+          >
+            ● {{ user.isOnline ? 'Active' : 'Inactive' }}
+          </span>
+        </td>
+
+        <!-- DATE -->
+        <td>
+          {{ user.createdAt | date:'dd MMM yyyy' }}
+        </td>
+
+        <!-- ACTION -->
+        <td>
+          <button class="delete-btn" (click)="deleteUser(user._id)">
+            🗑 Delete
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+  <!-- EMPTY -->
+  <p *ngIf="!loading && filteredUsers.length === 0">
+    No users found
+  </p>
+
+  <!-- LOADING -->
+  <p *ngIf="loading">
+    Loading users...
+  </p>
+
+</div>

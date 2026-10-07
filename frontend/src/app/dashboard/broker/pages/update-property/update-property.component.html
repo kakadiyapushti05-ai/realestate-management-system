@@ -1,0 +1,68 @@
+<div class="update-container">
+
+  <div class="update-card">
+
+    <h2>🏠 Update Property</h2>
+
+    <!-- PRICE -->
+    <div class="form-group">
+      <label>Price</label>
+      <input type="number" [(ngModel)]="propertyData.propertyprice">
+    </div>
+
+    <!-- STATUS -->
+    <div class="form-group">
+      <label>Status</label>
+
+      <div class="status-buttons">
+        <button 
+          [class.active]="propertyData.propertyStatus==='rent'"
+          (click)="propertyData.propertyStatus='rent'">🏠 Rent</button>
+
+        <button 
+          [class.active]="propertyData.propertyStatus==='sale'"
+          (click)="propertyData.propertyStatus='sale'">💰 Sale</button>
+
+        <button 
+          [class.active]="propertyData.propertyStatus==='sold'"
+          (click)="propertyData.propertyStatus='sold'">❌ Sold</button>
+      </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="propertyData.description"></textarea>
+    </div>
+
+    <!-- IMAGE SECTION -->
+    <div class="image-section">
+
+      <!-- OLD IMAGES -->
+      <div class="img-card" *ngFor="let img of images; let i=index">
+        <img [src]="'http://localhost:8000/uploads/' + img">
+        <span (click)="deleteImage(i)">✖</span>
+      </div>
+
+      <!-- NEW IMAGES -->
+      <div class="img-card" *ngFor="let img of imagePreview; let i=index">
+        <img [src]="img">
+        <span (click)="removePreview(i)">✖</span>
+      </div>
+
+    </div>
+
+    <!-- FILE INPUT -->
+    <div class="upload-box">
+      <input type="file" multiple (change)="onImageChange($event)">
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="button-group">
+      <button class="btn update" (click)="updateProperty()">Update</button>
+      <button class="btn delete" (click)="deleteProperty()">Delete</button>
+    </div>
+
+  </div>
+
+</div>

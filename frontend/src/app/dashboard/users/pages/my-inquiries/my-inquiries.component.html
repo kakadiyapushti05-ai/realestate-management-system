@@ -1,0 +1,75 @@
+<div class="inquiry-wrapper">
+
+<div class="header">
+
+<button class="back-btn" (click)="goBack()">
+← Back
+</button>
+
+<h2 class="title">My Inquiries</h2>
+
+</div>
+
+<p *ngIf="loading">Loading inquiries...</p>
+
+<div class="property-grid" *ngIf="!loading && inquiries.length > 0">
+
+<div class="property-card" *ngFor="let i of inquiries">
+
+<!-- IMAGE -->
+<div class="property-image">
+
+<img
+*ngIf="i.propertyId?.images?.length"
+[src]="'http://localhost:8000/uploads/' + i.propertyId.images[0]"
+/>
+
+<img
+*ngIf="!i.propertyId?.images?.length"
+src="https://via.placeholder.com/400x250?text=No+Image"
+/>
+
+<span class="status" [ngClass]="getStatusClass(i.status)">
+{{ i.status }}
+</span>
+
+</div>
+
+<!-- DETAILS -->
+<div class="property-details">
+
+<h3 class="property-title">
+{{ i.propertyId?.propertyname || 'Property Name' }}
+</h3>
+
+<p class="price">
+₹ {{ i.propertyId?.propertyprice || 0 }}
+</p>
+
+<div class="details-grid">
+
+<div>📍 {{ i.propertyId?.city || '-' }} , {{ i.propertyId?.area || '-' }}</div>
+
+<div>🏠 {{ i.propertyId?.type || '-' }}</div>
+
+<div>🛏 {{ i.propertyId?.size || '-' }} BHK</div>
+
+<div>🏢 Floor {{ i.propertyId?.floor || '-' }}</div>
+
+<div>🕒 Visit : {{ i.visitTime }}</div>
+
+<div>💰 Budget : ₹ {{ i.budget }}</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<p *ngIf="!loading && inquiries.length === 0">
+No inquiries found
+</p>
+
+</div>

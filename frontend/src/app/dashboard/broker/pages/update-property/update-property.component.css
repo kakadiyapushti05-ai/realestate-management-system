@@ -1,0 +1,162 @@
+.update-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background:linear-gradient(135deg,#dfe9f3,#cfd9df);
+}
+
+/* CARD */
+
+.update-card{
+  width:650px;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.65);
+  backdrop-filter:blur(15px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* TITLE */
+
+.update-card h2{
+  margin-bottom:20px;
+  font-weight:700;
+  color:#2c3e50;
+}
+
+/* FORM */
+
+.form-group{
+  margin-bottom:18px;
+}
+
+label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  background:rgba(255,255,255,0.8);
+}
+
+textarea{
+  min-height:90px;
+}
+
+/* STATUS BUTTONS */
+
+.status-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.status-buttons button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#e5e7eb;
+  cursor:pointer;
+  font-weight:500;
+  transition:0.2s;
+}
+
+.status-buttons button.active{
+  background:linear-gradient(135deg,#5b7cff,#4f46e5);
+  color:white;
+}
+
+/* IMAGE SECTION */
+
+.image-section{
+  display:flex;
+  gap:12px;
+  margin:15px 0;
+  flex-wrap:wrap;
+}
+
+.img-card{
+  position:relative;
+  width:110px;
+  height:85px;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+
+.img-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.img-card span{
+  position:absolute;
+  top:6px;
+  right:6px;
+  background:#ef4444;
+  color:white;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  font-size:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+}
+
+/* UPLOAD */
+
+.upload-box{
+  margin-top:10px;
+}
+
+.upload-box input{
+  border:none;
+}
+
+/* BUTTONS */
+
+.button-group{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+}
+
+.btn{
+  padding:12px 22px;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* UPDATE */
+
+.update{
+  background:linear-gradient(135deg,#5b7cff,#4f46e5);
+  color:white;
+}
+
+/* DELETE */
+
+.delete{
+  background:linear-gradient(135deg,#ff6a6a,#ef4444);
+  color:white;
+}
+/* HEADER */
+
+.header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+

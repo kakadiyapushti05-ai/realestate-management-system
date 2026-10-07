@@ -1,0 +1,132 @@
+.reported-wrapper {
+  padding: 30px;
+  background: #f1f5f9;
+  min-height: 100vh;
+}
+
+/* TITLE */
+.reported-wrapper h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: #f8fafc; /* 🔥 light grey like image */
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE BOX (IMPORTANT 🔥) */
+.image-box {
+  background: #e2e8f0;
+  padding: 8px;
+  border-radius: 16px;
+}
+
+.image-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* CONTENT */
+.content {
+  padding: 12px 5px;
+}
+
+/* TITLE ROW */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-row h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.price {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* CITY */
+.city {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* REASON */
+.reason {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ef4444;
+}
+
+.reason span {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* BUTTON */
+button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* DELETE */
+.delete {
+  background: #ef4444;
+  color: white;
+}
+
+.delete:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* RESOLVE */
+.resolve {
+  background: #22c55e;
+  color: white;
+}
+
+.resolve:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+

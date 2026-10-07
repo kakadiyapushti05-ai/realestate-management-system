@@ -1,0 +1,116 @@
+<div class="broker-container">
+
+  <div class="dashboard">
+
+    <!-- PROFILE -->
+    <div class="profile-card">
+
+  <img
+    [src]="broker.profileImage ? broker.profileImage : 'assets/images/user.png'"
+    (error)="onImageError($event)">
+
+  <div class="profile-info">
+    <h3>{{ broker.name }}</h3>
+    <p>Real Estate Broker</p>
+
+    <div class="contact">
+      <span>📞 {{ broker.contact }}</span>
+      <span>✉ {{ broker.email }}</span>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE BUTTONS -->
+  <div class="profile-actions">
+    <button class="edit-btn" (click)="openEditModal()">Edit Profile</button>
+
+    <!-- 🔥 LOGOUT -->
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+</div>
+
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+
+     <button class="add-btn" routerLink="/broker/add-property">
+🏠 Add Property
+</button>
+
+      <button class="update-btn" routerLink="/broker/update-property">
+        🔄 Updated Properties
+      </button>
+
+      <button class="inquiry-btn" routerLink="/broker/inquiry-details">
+        💬 Inquiry Requests
+      </button>
+
+    </div>
+
+
+    <!-- PROPERTY LIST -->
+    <div class="property-list">
+
+      <div class="property-card" *ngFor="let property of properties">
+
+  <div class="property-image">
+    <img [src]="property.image" (error)="onImageError($event)">
+  </div>
+
+  <div class="property-info">
+
+   <div class="top-row">
+  <h4>{{ property.propertyname }}</h4>
+
+  <span class="tag"
+    [ngClass]="property.propertyStatus === 'rent' ? 'rent' : 'sale'">
+    {{ property.propertyStatus }}
+  </span>
+</div>
+
+<p class="price">₹ {{ property.propertyprice }}</p>
+
+<p class="location">
+  📍 {{ property.city }}, {{ property.area }}
+</p>
+
+<p class="size">
+  🏠 {{ property.size }} BHK
+</p>
+
+  </div>
+
+</div>
+
+    </div>
+
+  </div>
+
+  <!-- ⭐ IMPORTANT -->
+  <router-outlet></router-outlet>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" *ngIf="showModal">
+
+  <div class="modal-box">
+
+    <h2>Edit Profile</h2>
+
+    <input type="text" [(ngModel)]="editData.name" placeholder="Name">
+
+    <input type="email" [(ngModel)]="editData.email" placeholder="Email">
+
+    <input type="text" [(ngModel)]="editData.contact" placeholder="Phone">
+
+    <input type="file" (change)="onFileSelect($event)">
+
+    <div class="modal-actions">
+      <button class="save-btn" (click)="updateProfile()">Save</button>
+      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+    </div>
+
+  </div>
+
+</div>

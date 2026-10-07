@@ -1,0 +1,104 @@
+<div class="glass-card">
+  <!-- 🔙 HEADER -->
+  <div class="header">
+
+    <div class="left-header">
+      <button class="back-btn" (click)="goBack()">← Back</button>
+      <h2>All Brokers</h2>
+    </div>
+
+    <div class="controls">
+      <input
+        type="text"
+        placeholder="Search brokers..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()"
+      />
+
+      <select [(ngModel)]="statusFilter" (change)="applyFilters()">
+        <option value="all">All Status</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+
+      <select [(ngModel)]="sortOrder" (change)="sortUsers()">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+
+  </div>
+
+  <table *ngIf="!loading && filteredBrokers.length > 0">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Broker</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Joined Date</th>
+         <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let b of filteredBrokers; let i = index">
+
+        <td>{{ i + 1 }}</td>
+
+        <!-- BROKER -->
+        <td class="user-cell">
+
+          <img
+            *ngIf="b.profileImage"
+            [src]="b.profileImage"
+            class="avatar-img"
+            (error)="b.profileImage=''"
+          />
+
+          <div *ngIf="!b.profileImage" class="avatar">
+            {{ b.name.charAt(0).toUpperCase() }}
+          </div>
+
+          <span>{{ b.name }}</span>
+        </td>
+
+        <td>{{ b.email }}</td>
+
+        <!-- STATUS -->
+        <td>
+          <span
+            class="status"
+            [ngClass]="b.isOnline ? 'active' : 'inactive'"
+          >
+            {{ b.isOnline ? 'Active' : 'Inactive' }}
+          </span>
+        </td>
+
+        <!-- JOIN DATE -->
+        <td>
+          {{ b.createdAt | date:'dd MMM yyyy' }}
+        </td>
+        <td>
+      <button 
+  class="delete-btn" 
+  *ngIf="b._id"
+  (click)="deleteBroker(b._id!)">
+  🗑 Delete
+</button>
+    </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && filteredBrokers.length === 0">
+    No brokers found
+  </p>
+
+  <p *ngIf="loading">
+    Loading brokers...
+  </p>
+
+</div>

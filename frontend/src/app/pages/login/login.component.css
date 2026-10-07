@@ -1,0 +1,284 @@
+/* 
+    PAGE BACKGROUND
+ */
+.auth-bg {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Background Image */
+.auth-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/assets/images/bg8.jpg') no-repeat center center / cover;
+  filter: blur(6px);
+  transform: scale(1.08);
+  z-index: -2;
+}
+
+/* Dark Gradient Overlay (Professional Look) */
+.auth-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.35)
+  );
+  z-index: -1;
+}
+
+/* 
+   MAIN CARD (Glass Effect)
+*/
+.auth-card {
+  display: flex;
+  width: 900px;
+  max-width: 95%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 25px 60px rgba(0,0,0,0.5),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  transition: 0.4s ease;
+}
+
+/* 
+   LEFT IMAGE SECTION
+ */
+.auth-image {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: 0.4s ease;
+}
+
+.auth-card:hover .auth-image img {
+  transform: scale(1.05);
+}
+
+/* Soft image overlay */
+.auth-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.4),
+    transparent
+  );
+}
+
+/* 
+   RIGHT FORM SECTION
+ */
+.auth-form {
+  width: 50%;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+}
+
+/* Title */
+.auth-form h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.auth-form p {
+  font-size: 14px;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+/* 
+   INPUT FIELDS
+ */
+.auth-form input {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.auth-form input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.auth-form input:focus {
+  border-color: #F4B63E;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 0 0 2px rgba(244,182,62,0.25);
+}
+
+/* 
+   BUTTON
+*/
+.auth-form button {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #F4B63E, #e0a832);
+  color: #3A1F1F;
+  transition: 0.3s ease;
+}
+
+.auth-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(244,182,62,0.4);
+}
+
+/* 
+   SIGNUP LINK
+ */
+.signup-link {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.signup-link span {
+  color: #F4B63E;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: 0.3s ease;
+}
+
+.signup-link span:hover {
+  color: #ffd77a;
+  text-decoration: underline;
+}
+
+/* 
+   RESPONSIVE
+ */
+@media (max-width: 900px) {
+  .auth-card {
+    flex-direction: column;
+  }
+
+  .auth-image {
+    width: 100%;
+    height: 240px;
+  }
+
+  .auth-form {
+    width: 100%;
+    padding: 40px 30px;
+  }
+}
+/* FORGOT LINK */
+.forgot-link {
+  text-align: right;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.forgot-link span {
+  cursor: pointer;
+  color: #F4B63E;
+}
+
+/* MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+/* MODAL ACTION BUTTONS */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* COMMON BUTTON STYLE */
+.modal-actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* SAVE BUTTON */
+.modal-actions button:first-child {
+  background: linear-gradient(135deg, #F4B63E, #e0a832); /* 🔥 same as login */
+  color: #3A1F1F;
+}
+
+.modal-actions button:first-child:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(244,182,62,0.4);
+}
+
+/* CANCEL BUTTON */
+.modal-actions button:last-child {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.modal-actions button:last-child:hover {
+  background: #d1d5db;
+  transform: translateY(-2px);
+}

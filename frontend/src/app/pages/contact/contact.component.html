@@ -1,0 +1,78 @@
+<div class="contact-container">
+
+  <div class="contact-card">
+
+    <div class="contact-left">
+      <h2>Get In Touch</h2>
+
+      <div class="info-item">
+        <h4>📍 Address</h4>
+        <p>123 CG Road,<br>Ahmedabad, Gujarat, India</p>
+      </div>
+
+      <div class="info-item">
+        <h4>📞 Phone</h4>
+        <p>+91 98765 43210</p>
+      </div>
+
+      <div class="info-item">
+        <h4>📧 Email</h4>
+        <p>
+          <a [href]="'mailto:' + email">
+            {{ email }}
+          </a>
+        </p>
+      </div>
+
+      <div class="info-item">
+        <h4>🕒 Working Hours</h4>
+        <p>Mon - Sat : 9:00 AM - 7:00 PM</p>
+      </div>
+    </div>
+
+
+    <!-- Divider -->
+    <div class="vertical-line"></div>
+
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="contact-right">
+
+      <h2>Contact Us</h2>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label>Contact No</label>
+          <input type="text" formControlName="contactNo" />
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" formControlName="message"></textarea>
+        </div>
+
+        <button type="submit" [disabled]="contactForm.invalid">
+          Send Message
+        </button>
+
+        <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

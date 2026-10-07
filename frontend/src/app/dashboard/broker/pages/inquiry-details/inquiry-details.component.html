@@ -1,0 +1,116 @@
+<div class="inquiry-page">
+
+  <!-- HEADER -->
+  <div class="top-header">
+
+    <button class="back-btn" (click)="goToDashboard()">←</button>
+
+    <div>
+      <h2>My Property Inquiries</h2>
+      <p class="breadcrumb">Dashboard / My Property Inquiries</p>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+    </div>
+
+  </div>
+
+  <!-- CARD -->
+  <div class="table-card">
+
+    <p *ngIf="loading">Loading inquiries...</p>
+
+    <table *ngIf="!loading && inquiries.length > 0">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Budget</th>
+          <th>Visit</th>
+          <th>Message</th>
+          <th>Property</th>
+          <th>Price</th> 
+    <th>Property Status</th> 
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let i of inquiries">
+
+          <td>{{ i.username }}</td>
+          <td>{{ i.email }}</td>
+          <td>{{ i.phone || '-' }}</td>
+          <td>₹ {{ i.budget || '-' }}</td>
+          <td>{{ i.visitTime || '-' }}</td>
+          <td class="msg">{{ i.message || '-' }}</td>
+
+          <td>
+            <strong>{{ i.propertyId?.propertyname }}</strong><br>
+            <span class="location">
+              {{ i.propertyId?.city }} – {{ i.propertyId?.area }}
+            </span>
+          </td>
+         <td>
+  ₹ {{ i.propertyId?.propertyprice || '-' }}
+</td>
+
+<td>
+  <span 
+    class="property-status"
+    [ngClass]="i.propertyId?.propertyStatus"
+  >
+    {{ i.propertyId?.propertyStatus || 'N/A' }}
+  </span>
+</td>
+          <td>
+            <span 
+              class="status"
+              [ngClass]="{
+                'pending': i.status === 'pending',
+                'accepted': i.status === 'accepted',
+                'rejected': i.status === 'rejected'
+              }"
+            >
+              {{ i.status || 'pending' }}
+            </span>
+          </td>
+
+          <td class="action-buttons">
+
+            <button 
+              class="accept-btn"
+              (click)="updateStatus(i,'accepted')"
+              [disabled]="i.status !== 'pending'"
+            >
+              Accept
+            </button>
+
+            <button 
+              class="reject-btn"
+              (click)="updateStatus(i,'rejected')"
+              [disabled]="i.status !== 'pending'"
+            >
+              Reject
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <p *ngIf="!loading && inquiries.length === 0">
+      No inquiries found.
+    </p>
+
+  </div>
+
+</div>

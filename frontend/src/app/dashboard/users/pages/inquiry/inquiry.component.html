@@ -1,0 +1,87 @@
+<div class="inquiry-page">
+
+<div class="inquiry-card">
+
+<!-- BACK ICON -->
+<div class="back-icon" (click)="goBack()">
+←
+</div>
+
+<h2 class="form-title">Property Inquiry</h2>
+
+<form (ngSubmit)="submitInquiry()">
+
+<!-- FULL NAME -->
+<div class="input-group fixed-label">
+<label>Full Name</label>
+<input type="text"
+[(ngModel)]="inquiryData.username"
+name="username"
+readonly />
+</div>
+
+<!-- EMAIL -->
+<div class="input-group fixed-label">
+<label>Email Address</label>
+<input type="email"
+[(ngModel)]="inquiryData.email"
+name="email"
+readonly />
+</div>
+
+<!-- PHONE -->
+<div class="input-group">
+<label>Phone Number</label>
+<input type="text"
+[(ngModel)]="inquiryData.phone"
+name="phone"
+required />
+</div>
+
+<!-- INQUIRY FOR -->
+<div class="input-group fixed-label">
+<label>Inquiry For</label>
+<input type="text"
+[(ngModel)]="inquiryData.inquiryFor"
+name="inquiryFor"
+readonly />
+</div>
+
+<!-- BUDGET -->
+<div class="input-group">
+<label>Budget</label>
+<input type="number"
+[(ngModel)]="inquiryData.budget"
+name="budget" />
+</div>
+
+<!-- VISIT TIME -->
+<div class="input-group fixed-label">
+<label>Preferred Visit Time</label>
+<select [(ngModel)]="inquiryData.visitTime" name="visitTime" required>
+<option value="">Select Visit Time</option>
+<option value="Morning">Morning</option>
+<option value="Afternoon">Afternoon</option>
+<option value="Evening">Evening</option>
+</select>
+</div>
+
+<!-- MESSAGE -->
+<div class="input-group">
+<label>Your Message</label>
+<textarea
+[(ngModel)]="inquiryData.message"
+name="message"
+required>
+</textarea>
+</div>
+
+<button type="submit" class="submit-btn">
+Submit Inquiry
+</button>
+
+</form>
+
+</div>
+
+</div>

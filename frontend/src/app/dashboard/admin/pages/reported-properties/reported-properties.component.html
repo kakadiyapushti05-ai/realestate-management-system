@@ -1,0 +1,54 @@
+<div class="reported-wrapper">
+
+   <!-- 🔙 HEADER -->
+  <div class="top-header">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+    <h2>🚨 Reported Properties</h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" *ngFor="let p of reportedProperties">
+
+      <!-- IMAGE -->
+      <div class="image-box">
+        <img 
+          [src]="'http://localhost:8000/uploads/' + (p.images?.[0] || 'default.jpg')" 
+        />
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+
+        <div class="title-row">
+          <h3>{{ p.propertyname }}</h3>
+          <span class="price">₹{{ p.propertyprice | number }}</span>
+        </div>
+
+        <p class="city">📍 City: {{ p.city }}</p>
+
+        <!-- REASON -->
+        <p class="reason">
+          ❤️ Reason: <span>{{ p.reportReason || 'Reported by user' }}</span>
+        </p>
+
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+
+        <button class="delete" (click)="deleteProperty(p._id)">
+          ✖ Delete
+        </button>
+
+        <button class="resolve" (click)="resolveProperty(p._id)">
+          ✔ Resolve
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

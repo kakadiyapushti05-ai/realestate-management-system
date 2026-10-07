@@ -1,0 +1,65 @@
+
+:host {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+
+
+/* Full screen background */
+.bg {
+  position: fixed;
+  inset: 0;
+
+  background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa')
+    no-repeat center/cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass card */
+.glass-card {
+  width: 450px;
+  padding: 30px;
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+  color: white;
+}
+
+/* Title */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+
+  background: #a32020;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

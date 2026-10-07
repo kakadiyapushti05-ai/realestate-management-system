@@ -1,0 +1,272 @@
+.broker-container{
+padding:30px;
+background:#f5f6fa;
+min-height:100vh;
+}
+
+.dashboard{
+max-width:1200px;
+margin:auto;
+}
+
+/* PROFILE */
+
+.profile-card{
+display:flex;
+align-items:center;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+margin-bottom:25px;
+}
+
+.profile-card img{
+width:80px;
+height:80px;
+border-radius:50%;
+margin-right:15px;
+object-fit:cover;
+}
+
+.profile-info h3{
+margin:0;
+}
+
+.contact span{
+margin-right:15px;
+font-size:14px;
+}
+
+.edit-btn{
+margin-left:auto;
+background:#f1f2f6;
+border:none;
+padding:8px 15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* ACTION BUTTONS */
+
+.action-buttons{
+display:flex;
+gap:15px;
+margin-bottom:30px;
+}
+
+.action-buttons button{
+flex:1;
+padding:18px;
+border:none;
+border-radius:8px;
+font-size:16px;
+color:white;
+cursor:pointer;
+}
+
+.add-btn{
+background:linear-gradient(90deg,#27ae60,#2ecc71);
+}
+
+.update-btn{
+background:linear-gradient(90deg,#2980b9,#3498db);
+}
+
+.inquiry-btn{
+background:linear-gradient(90deg,#ff7e00,#ff5500);
+}
+
+/* PROPERTY LIST */
+.property-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(360px, 1fr));
+  gap:22px;
+}
+
+/* CARD */
+.property-card{
+  display:flex;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  overflow:hidden;
+  transition:all 0.3s ease;
+  cursor:pointer;
+  min-height:160px; /* ✅ FIXED */
+}
+
+/* HOVER */
+.property-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 35px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+.property-image{
+  width:200px;
+  min-height:160px; /* ✅ SAME HEIGHT */
+}
+
+.property-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px 0 0 16px;
+  transition:transform 0.4s ease;
+}
+
+.property-card:hover img{
+  transform:scale(1.08);
+}
+
+/* INFO */
+.property-info{
+  flex:1;
+  padding:14px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:6px; /* ✅ spacing fix */
+}
+
+/* TOP ROW */
+.top-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* TITLE */
+.property-info h4{
+  margin:0;
+  font-size:18px;
+  font-weight:600;
+  color:#2c3e50;
+}
+
+/* PRICE */
+.price{
+  font-size:16px;
+  font-weight:700;
+  color:#111;
+}
+
+/* LOCATION */
+.location{
+  font-size:13px;
+  color:#6b7280;
+}
+
+/* SIZE (🔥 FIXED VISIBILITY) */
+.size{
+  font-size:13px;
+  color:#374151;
+  font-weight:500;
+}
+
+/* TAG */
+.tag{
+  padding:7px 14px;     
+  font-size:13px;       
+  border-radius:8px;    
+  color:white;
+  font-weight:600;
+}
+
+.rent{
+  background:#22c55e;
+}
+
+.sale{
+  background:#ef4444;
+}
+
+/* MODAL */
+
+.modal-backdrop{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.modal-box{
+background:white;
+padding:25px;
+border-radius:10px;
+width:350px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.modal-box input{
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.modal-actions{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+}
+
+.save-btn{
+background:#2ecc71;
+color:white;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.cancel-btn{
+background:#e74c3c;
+color:white;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+/* 🔥 PROFILE ACTION BUTTONS (RIGHT SIDE) */
+.profile-actions{
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;   /* 🔥 vertical */
+  gap: 10px;
+  align-items: flex-end;
+}
+
+/* EDIT BUTTON (thodu upar proper) */
+.edit-btn{
+  background:#f1f2f6;
+  border:none;
+  padding:8px 15px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* 🔥 LOGOUT BUTTON */
+.logout-btn{
+  background: linear-gradient(135deg,#8b6b4a,#6f533c); /* navbar color */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.logout-btn:hover{
+  background: linear-gradient(135deg,#6f533c,#5a4331);
+  transform: scale(1.05);
+}
